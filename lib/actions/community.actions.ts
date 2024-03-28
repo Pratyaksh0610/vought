@@ -19,6 +19,7 @@ export async function createCommunity(
   try {
     connectToDB();
 
+    // Find the user with the provided unique id
     const user = await User.findOne({ id: createdById });
 
     if (!user) {
@@ -181,6 +182,7 @@ export async function addMemberToCommunity(
 
     return community;
   } catch (error) {
+    // Handle any errors
     console.error("Error adding member to community:", error);
     throw error;
   }
@@ -219,7 +221,6 @@ export async function removeUserFromCommunity(
 
     return { success: true };
   } catch (error) {
-    // Handle any errors
     console.error("Error removing user from community:", error);
     throw error;
   }
